@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col xl6 l6 m12 s12">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Graphical</mat-card-title>
+          <mat-card-subtitle>Representation</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <app-stats></app-stats>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col xl6 l6 m12 s12">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Pick List</mat-card-title>
+          <mat-card-subtitle>To do</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <app-picklist [source]="sourceCars" [target]="targetCars" sourceHeader="Available" targetHeader="Selected"
+            [responsive]="true" dragdrop="true" filterBy="id" showSourceFilter="true" showTargetFilter="true"
+            sourceFilterPlaceholder="Search by brand" targetFilterPlaceholder="Search by brand"
+            [sourceStyle]="{'height':'300px'}" [targetStyle]="{'height':'300px'}">
+          </app-picklist>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

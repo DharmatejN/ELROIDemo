@@ -1,0 +1,112 @@
+<mat-card>
+  <div class="row">
+    <div class="col xl5 l5 m12 s12">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title *ngIf="sourceHeader">{{sourceHeader}}</mat-card-title>
+          <mat-card-subtitle *ngIf="filterBy && showSourceFilter !== false">
+            <mat-form-field class="full-width">
+              <input matInput type="text" #sourceFilter role="textbox" (keyup)="onFilter($event,source,SOURCE_LIST)"
+                [disabled]="disabled">
+              <mat-label>{{sourceFilterPlaceholder}}</mat-label>
+              <mat-hint align="start"><strong>{{ariaSourceFilterLabel}}</strong> </mat-hint>
+              <button mat-button *ngIf="sourceFilter.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="sourceFilter.value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="listScroll">
+            <mat-selection-list #sourcelist>
+              <ng-template ngFor let-item [ngForOf]="source" [ngForTrackBy]="sourceTrackBy || trackBy" let-i="index"
+                let-l="last">
+                <mat-list-option (click)="onItemClick($event,item,selectedItemsSource,onSourceSelect)"
+                  (dblclick)="onSourceItemDblClick()" (touchend)="onItemTouchEnd($event)"
+                  (keydown)="onItemKeydown($event,item,selectedItemsSource,onSourceSelect)"
+                  [style.display]="isItemVisible(item, SOURCE_LIST) ? 'block' : 'none'" tabindex="0">
+                  <!-- <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: item, index: i}"></ng-container> -->
+                  {{item.id}}
+                </mat-list-option>
+              </ng-template>
+            </mat-selection-list>
+            <ng-container *ngIf="(source == null || source.length === 0) && emptyMessageSourceTemplate">
+              <li class="ui-picklist-empty-message">
+                <!-- <ng-container *ngTemplateOutlet="emptyMessageSourceTemplate"></ng-container> -->
+                No Records Found
+              </li>
+            </ng-container>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col xl2 l2 m12 s12">
+      <div class="row centerBlockMargin">
+        <div class="col xl12 l12 m3 s3 padTopBot">
+          <button mat-mini-fab color="primary" matTooltip="Move Right" [disabled]="disabled" (click)="moveRight()">
+            <mat-icon class="mat-18">arrow_right</mat-icon>
+          </button>
+        </div>
+        <div class="col xl12 l12 m3 s3 padTopBot">
+          <button mat-mini-fab color="primary" matTooltip="Move All Right" [disabled]="disabled"
+            (click)="moveAllRight()">
+            <mat-icon class="mat-18">fast_forward</mat-icon>
+          </button>
+        </div>
+        <div class="col xl12 l12 m3 s3 padTopBot">
+          <button mat-mini-fab color="primary" matTooltip="Move Left" [disabled]="disabled" (click)="moveLeft()">
+            <mat-icon class="mat-18">arrow_left</mat-icon>
+          </button>
+        </div>
+        <div class="col xl12 l12 m3 s3 padTopBot">
+          <button mat-mini-fab color="primary" matTooltip="Move All Left" [disabled]="disabled"
+            (click)="moveAllLeft()">
+            <mat-icon class="mat-18">fast_rewind</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col xl5 l5 m12 s12">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title *ngIf="targetHeader">{{targetHeader}}</mat-card-title>
+          <mat-card-subtitle *ngIf="filterBy && showTargetFilter !== false">
+            <mat-form-field class="full-width">
+              <input matInput #targetFilter type="text" role="textbox" (keyup)="onFilter($event,target,TARGET_LIST)"
+                [disabled]="disabled">
+              <mat-label>{{targetFilterPlaceholder}}</mat-label>
+              <mat-hint align="start"><strong>{{ariaTargetFilterLabel}}</strong> </mat-hint>
+              <button mat-button *ngIf="targetFilter.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="targetFilter.value=''">
+                <mat-icon>close</mat-icon>
+              </button>
+            </mat-form-field>
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="listScroll">
+            <mat-selection-list #sourcelist>
+              <ng-template ngFor let-item [ngForOf]="target" [ngForTrackBy]="targetTrackBy || trackBy" let-i="index"
+                let-l="last">
+                <mat-list-option (click)="onItemClick($event,item,selectedItemsTarget,onTargetSelect)"
+                  (dblclick)="onTargetItemDblClick()" (touchend)="onItemTouchEnd($event)"
+                  (keydown)="onItemKeydown($event,item,selectedItemsTarget,onTargetSelect)"
+                  [style.display]="isItemVisible(item, TARGET_LIST) ? 'block' : 'none'" tabindex="0">
+                  <!-- <ng-container *ngTemplateOutlet="itemTemplate; context: {$implicit: item, index: i}"></ng-container> -->
+                  {{item.id}}
+                </mat-list-option>
+              </ng-template>
+            </mat-selection-list>
+            <ng-container *ngIf="(target == null || target.length === 0) && emptyMessageTargetTemplate">
+              <li class="ui-picklist-empty-message">
+                <!-- <ng-container *ngTemplateOutlet="emptyMessageTargetTemplate"></ng-container> -->
+                No Records Found
+              </li>
+            </ng-container>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</mat-card>

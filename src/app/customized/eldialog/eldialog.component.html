@@ -1,0 +1,30 @@
+<h3 matDialogTitle> {{data.Header}}</h3>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-content [formGroup]="form">
+  <div>
+    <mat-form-field>
+      <input matInput placeholder="Chart Name" formControlName="chartName">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field>
+      <mat-select placeholder="Chart">
+        <mat-option *ngFor="let chart of charts" formControlName="chartType" value="chart.value">
+          {{chart.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions>
+  <button mat-raised-button matDialogClose [matDialogClose]="action" color="primary"
+    *ngIf="data.ok !== undefined">{{data.ok}}</button>
+  <button mat-raised-button matDialogClose [matDialogClose]="close" color="warn"
+    *ngIf="data.cancel !== undefined">{{data.cancel}}</button>
+</mat-dialog-actions>

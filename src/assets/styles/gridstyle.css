@@ -1,0 +1,14 @@
+.mat-row:nth-child(even) {
+  background-color: white;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: rgb(236, 236, 236);
+}
+
+.mat-header-cell,
+.mat-sort-header {
+  background-color: dimgray;
+  color: white;
+  font-size: medium;
+}

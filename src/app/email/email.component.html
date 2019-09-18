@@ -1,0 +1,92 @@
+<div mat-dialog-avatar mat-dialog-title>
+  <button mat-mini-fab aria-label="Example icon-button with a heart icon" color="primary">
+    <mat-icon>mail_outline</mat-icon>
+  </button>
+  Email Wizard
+</div>
+
+<mat-dialog-content>
+  <form class="example-form" [formGroup]="frmEmail" #emailForm="ngForm">
+    <mat-form-field class="example-full-width">
+      <mat-chip-list #chipList aria-label="Color selection">
+        <mat-chip *ngFor="let email of emails" [selectable]="selectable" [removable]="removable"
+          (removed)="removeSender(email,'TO')" [ngClass]="email.IsValid? 'chip':'chiperr'">
+          {{email.mailId}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input ngDefaultControl placeholder="To" #emailinput [formControl]="emailTo" [matAutocomplete]="auto"
+          [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addSender($event,'TO')">
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelection($event,'TO')">
+        <mat-option *ngFor="let email of filteredEmails | async" [value]="email">
+          {{email.mailId}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-chip-list #CCchipList aria-label="Color selection">
+        <mat-chip *ngFor="let email of CCemails" [selectable]="selectable" [removable]="removable"
+          (removed)="removeSender(email,'CC')" [ngClass]="email.IsValid? 'chip':'chiperr'">
+          {{email.mailId}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Cc" #ccemailinput [formControl]="emailCc" [matAutocomplete]="ccauto"
+          [matChipInputFor]="CCchipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="addSender($event,'CC')">
+      </mat-chip-list>
+      <mat-autocomplete #ccauto="matAutocomplete" (optionSelected)="onSelection($event,'CC')">
+        <mat-option *ngFor="let email of filteredccEmails | async" [value]="email">
+          {{email.mailId}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-chip-list #BcchipList aria-label="Color selection">
+        <mat-chip *ngFor="let email of BCCemails" [selectable]="selectable" [removable]="removable"
+          (removed)="removeSender(email,'BCC')" [ngClass]="email.IsValid? 'chip':'chiperr'">
+          {{email.mailId}}
+          <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="Bcc" #Bccemailinput [matChipInputFor]="BcchipList" autocomplete="off"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+          (matChipInputTokenEnd)="addSender($event,'BCC')">
+      </mat-chip-list>
+    </mat-form-field>
+
+    <div align="End">
+      <mat-checkbox class="example-margin" formControlName="emailAddBccToAddressBook" checked>(Add to Address Book)
+      </mat-checkbox>
+    </div>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Subject:" [formControl]="emailSubject">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <textarea matInput placeholder="Comments" [formControl]="emailComments"></textarea>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Signature:" [formControl]="emailSignature">
+    </mat-form-field>
+
+  </form>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+
+  <button mat-stroked-button (click)="onCancel()" style="color: red">
+    <mat-icon>arrow_back</mat-icon>Cancel
+    <!-- <mat-progress-bar [style.background-color]="color" style="width: 100px !important" [mode]="mode"></mat-progress-bar> -->
+
+  </button>
+  <button mat-stroked-button (click)="onSend()" [disabled]="emailForm.form.invalid" cdkFocusInitial
+    [style.color]="!emailForm.form.invalid?'green':''">Send
+    <mat-icon>arrow_forward</mat-icon>
+    <!-- <mat-progress-bar [style.background-color]="Sendcolor" style="width: 100px !important;"
+        [mode]="Sendmode"  [value]="value" ></mat-progress-bar> -->
+  </button>
+
+</mat-dialog-actions>

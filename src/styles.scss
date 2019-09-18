@@ -1,0 +1,23 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/styles/responsivebreakpoints.css";
+@import "./assets/styles/scrollbar.css";
+@import "./assets/styles/gridstyle.css";
+@import "./assets/styles/dialogstyle.css";
+@import "./assets/styles/toaststyle.css";
+
+// @import "materialtheming.scss";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.dark-backdrop {
+  background: gainsboro;
+  opacity: 0.3 !important;
+}
