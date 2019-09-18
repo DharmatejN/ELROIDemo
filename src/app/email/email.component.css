@@ -1,0 +1,56 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+
+}
+
+div {
+
+  margin-bottom: 0.5rem;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+.chip {
+  background-color: #346cb0;
+  color: white;
+}
+
+.chiperr {
+  background-color: #f44336;
+  color: white;
+}
+
+example-card {
+  max-width: 400px;
+}
+
+
+
+.header {
+  overflow: hidden;
+  background-color: white;
+  padding: 20px 10px;
+}
+
+
+.logo {
+  font-size: 16px;
+}
+
+Button {
+
+  margin-right: 1rem;
+}
+
+/* 
+.mat-stroked-button{
+  border:1px solid currentColor;
+  line-height: 34px;
+  padding:0px 1px;
+
+} */

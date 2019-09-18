@@ -1,0 +1,7 @@
+.centre-card {
+  max-width: 350px;
+  margin: 0 auto;
+  top: 25%;
+  text-align: center;
+  padding: 0px 0px 16px 0px !important;
+}

@@ -1,0 +1,35 @@
+<form [formGroup]="signInForm" (ngSubmit)="loginConfirm()" style="height: 100%">
+  <mat-card class="elLogin centre-card glass elcard-dialog">
+    <mat-card-title>
+      Login
+    </mat-card-title>
+    <mat-card-content>
+
+      <table cellspacing="0" cellpadding="0" border="0" align="center">
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Username" [(ngModel)]="username" name="username" required
+                [formControl]="login" [errorStateMatcher]="matcher">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <input matInput placeholder="Password" [(ngModel)]="password" type="password" name="password" required
+                [formControl]="loginpassword" [errorStateMatcher]="matcher">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+    <mat-card-actions>
+      <button mat-raised-button type="submit" color="primary">Login</button>
+      <button mat-raised-button (click)="register()" type="button" color="primary">Register</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+<app-toast></app-toast>

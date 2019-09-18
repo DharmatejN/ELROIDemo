@@ -1,0 +1,24 @@
+<h3 matDialogTitle *ngIf="data.Header !=undefined; else elseHeader">
+  {{data.Header}}</h3>
+<ng-template #elseHeader>
+  <h3 matDialogTitle>Confirm</h3>
+</ng-template>
+<mat-divider></mat-divider>
+
+<mat-dialog-content>
+  <div [innerHTML]="data.Label"></div>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions align="end">
+  <button mat-raised-button matDialogClose [matDialogClose]="action" color="primary"
+    *ngIf="data.ok !== undefined; else elseBlock1">{{data.ok}}</button>
+  <ng-template #elseBlock1> <button mat-raised-button matDialogClose [matDialogClose]="action"
+      color="primary">Ok</button></ng-template>
+
+  <button mat-raised-button matDialogClose [matDialogClose]="close" color="warn"
+    *ngIf="data.cancel !== undefined; else elseBlock2">{{data.cancel}}</button>
+  <ng-template #elseBlock2> <button mat-raised-button matDialogClose [matDialogClose]="close"
+      color="primary">Cancel</button></ng-template>
+</mat-dialog-actions>

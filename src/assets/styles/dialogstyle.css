@@ -1,0 +1,54 @@
+/* Mat Dialog Edited Classes -- Start */
+.elalert mat-dialog-container,
+.elconfirm mat-dialog-container,
+.elpopup mat-dialog-container {
+  padding: 0px 0px 20px 0px;
+  overflow: hidden;
+}
+
+.elalert mat-dialog-content,
+.elconfirm mat-dialog-content,
+.elpopup mat-dialog-content {
+  padding: 10px 24px;
+  margin: 0px;
+}
+
+.elconfirm .mat-dialog-title {
+  /* background-color: lightblue; */
+  background: url("../images/background/bg3.png");
+  background-repeat: repeat;
+  margin: 0px 0px 0px 0px;
+  padding: 10px 20px;
+  color: white;
+}
+
+.elalert .mat-dialog-title {
+  /* background-color: lightpink; */
+  background: url("../images/background/bg4.jpg");
+  background-repeat: repeat;
+  margin: 0px 0px 0px 0px;
+  padding: 10px 20px;
+}
+
+.elpopup .mat-dialog-title {
+  /* background-color: lightgreen; */
+  background: url("../images/background/bg1.jpg");
+  background-repeat: repeat;
+  margin: 0px 0px 0px 0px;
+  padding: 10px 20px;
+}
+
+.elalert mat-dialog-actions,
+.elconfirm mat-dialog-actions,
+.elpopup mat-dialog-actions {
+  padding: 8px 20px;
+}
+
+.elLogin .mat-card-title {
+  background: url("../images/background/BlogBG.png");
+  background-repeat: repeat;
+  padding: 10px;
+  border-radius: 4px 4px 0px 0px;
+}
+
+/* Mat Dialog Edited Classes -- End */

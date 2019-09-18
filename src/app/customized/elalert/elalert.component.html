@@ -1,0 +1,20 @@
+<h3 matDialogTitle align="left" *ngIf="data.Header !=undefined; else elseHeader"> {{data.Header}}</h3>
+<ng-template #elseHeader>
+  <h3 matDialogTitle align="left">Alert!</h3>
+</ng-template>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-content>
+  <div [innerHTML]="data.Label"></div>
+</mat-dialog-content>
+
+<mat-divider></mat-divider>
+
+<mat-dialog-actions align="center">
+  <button mat-raised-button matDialogClose [matDialogClose]="close" color="primary"
+    *ngIf="data.ok !=undefined; else elseBlock1">{{data.ok}}</button>
+  <ng-template #elseBlock1> <button mat-raised-button matDialogClose [matDialogClose]="close"
+      color="primary">OK</button></ng-template>
+
+</mat-dialog-actions>
